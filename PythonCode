@@ -1,1 +1,14 @@
 # A function that enables you to run your code whenever you want.
+# your_function is the function you want to run repeatedly.
+
+from datetime import datetime
+from apscheduler.schedulers.blocking import BlockingScheduler
+
+def your_function():
+   print("Hello world")
+
+sched = BlockingScheduler()
+sched.add_job(your_function, 'interval', hours =24, start_date = '2020-11-09 07:30:00')
+sched.add_job(your_function, 'interval', minutes=3)
+sched.add_job(your_function, 'interval', hours=2, start_date='2010-10-10 09:30:00', end_date='2014-06-15 11:00:00')
+sched.start()
